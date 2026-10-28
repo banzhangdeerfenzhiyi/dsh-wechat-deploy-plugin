@@ -48,6 +48,42 @@
 > 也可以在 DSH 的「添加插件」里填本仓库的 **GitHub 地址**（不是 npm 包名）安装：
 > DSH 会拉取仓库并读取 `package.json` 的 `dsh.bundle`。包名方式只适用于已发布到 npm 的插件。
 
+## 安装方式
+
+### 方式 A：DSH「添加插件」填 GitHub 地址（推荐，现在就能用）
+
+DSH 桌面版 → 插件 → **添加插件**，输入本仓库地址：
+
+```
+https://github.com/banzhangdeerfenzhiyi/dsh-wechat-deploy-plugin
+```
+
+DSH 会拉取仓库并读取 `package.json` 的 `dsh.bundle`，按 `cordis.patch.yml` 加载插件。
+安装完成后重启 DeepSeek Harness。
+
+### 方式 B：命令行安装（等价于 A）
+
+```bash
+dsh plugin --profile desktop add https://github.com/banzhangdeerfenzhiyi/dsh-wechat-deploy-plugin
+```
+
+### 方式 C：npm 包名（发布到 npm 后可用）
+
+```bash
+dsh plugin --profile desktop add dsh-wechat-deploy-plugin
+```
+
+> 维护者提示：npm 发布配置与自动发布流程已就绪（`.github/workflows/publish-npm.yml`，
+> 需要仓库 secret `NPM_TOKEN`）。发布后把本节的「发布后可用」提示去掉即可。
+
+### 方式 D：本地脚本（开发者）
+
+```bash
+npm install
+node tools/install.mjs     # 自动探测路径并写入 profile patch
+# 重启 DSH
+```
+
 ## 安装
 
 ```powershell

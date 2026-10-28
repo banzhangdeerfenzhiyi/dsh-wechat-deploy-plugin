@@ -1,0 +1,27 @@
+name: publish-npm
+
+# 发布到 npm：在 GitHub 创建 Release 时自动执行，也可以在 Actions 页面手动触发。
+# 需要先在仓库 Settings -> Secrets and variables -> Actions 里添加 NPM_TOKEN
+# （npmjs.com -> Access Tokens -> Generate New Token，类型选 Automation 或 Granular
+#  并授予 publish 权限），否则这一步会失败。
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: https://registry.npmjs.org
+      - name: Publish package
+        run: npm publish --access public --provenance
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
