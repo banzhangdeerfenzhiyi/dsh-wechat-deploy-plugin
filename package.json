@@ -1,0 +1,38 @@
+{
+  "name": "dsh-wechat-deploy-plugin",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "DSH 宿主插件：把微信 Hook（4.1.10.27）的检查、准备、启动、重启与构建变成可对话调用的工具。",
+  "main": "index.mjs",
+  "exports": {
+    ".": "./index.mjs",
+    "./package.json": "./package.json"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "test": "node test/unit.test.mjs",
+    "status": "node tools/status-cli.mjs",
+    "install-plugin": "node tools/install.mjs",
+    "uninstall-plugin": "node tools/install.mjs --remove"
+  },
+  "files": [
+    "index.mjs",
+    "src",
+    "tools",
+    "cordis.patch.yml",
+    "README.md"
+  ],
+  "license": "MIT",
+  "author": "banzhangdeerfenzhiyi",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/banzhangdeerfenzhiyi/dsh-wechat-deploy-plugin.git"
+  },
+  "bugs": {
+    "url": "https://github.com/banzhangdeerfenzhiyi/dsh-wechat-deploy-plugin/issues"
+  },
+  "homepage": "https://github.com/banzhangdeerfenzhiyi/dsh-wechat-deploy-plugin#readme"
+}
