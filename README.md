@@ -45,6 +45,9 @@
 - Windows PowerShell 5.1 可用（`powershell.exe` 在 PATH 里）；构建另需 Visual Studio C++ 生成工具。
 - 插件以 DSH host 插件方式加载，装完要**重启 DeepSeek Harness**。
 
+> 也可以在 DSH 的「添加插件」里填本仓库的 **GitHub 地址**（不是 npm 包名）安装：
+> DSH 会拉取仓库并读取 `package.json` 的 `dsh.bundle`。包名方式只适用于已发布到 npm 的插件。
+
 ## 安装
 
 ```powershell

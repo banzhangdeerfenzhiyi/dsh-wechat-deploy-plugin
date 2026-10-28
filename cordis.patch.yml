@@ -1,28 +1,20 @@
-# dsh-wechat-deploy 的 profile 插入模板。
+# dsh-wechat-deploy-plugin — bundle patch
 #
-# tools/install.mjs 会把同样的内容（带托管标记）写入每个 profile 的
-# cordis.patch.yml；这里的文件只用于手工合并或对照，不会自动生效。
+# 推荐安装方式：`node tools/install.mjs`（会把带路径的 insert 写进每个 profile patch）。
 #
-# 合并方式：把下面整段 `- insert:` 追加到目标 profile 的 cordis.patch.yml 末尾，
-# 然后把 name 里的路径改成实际安装目录，重启 DSH。
+# 也可以作为 DSH bundle 安装：
+#   dsh plugin --profile desktop add https://github.com/banzhangdeerfenzhiyi/dsh-wechat-deploy-plugin
+# 或在 DSH 的「添加插件」里填 GitHub 仓库地址（不是 npm 包名）。
+#
+# workspace 留空 = 自动探测：WECHATAGENT_WORKSPACE → ~/Documents/data/workspace
+# → <DSH_HOME>/wechatagent。其余配置大多来自工作区的 config/wechatagent.json。
 - insert:
     - id: dsh-wechat-deploy
-      name: "file:///<DSH_HOME>/dsh-wechat-deploy-plugin/index.mjs"
+      name: 'dsh-wechat-deploy-plugin'
       config:
         enabled: true
         promptEnabled: true
-        # 自动检测候选：WECHATAGENT_WORKSPACE、、
-        # ~/Documents/data/workspace、<DSH_HOME>/wechatagent。写死则优先生效。
-        workspace: ""
-        hookUrl: "http://127.0.0.1:30001"
-        expectedVersion: "4.1.10.27"
-        powershell: "powershell.exe"
-        # 需要时再加下面这些覆盖项（不写就用 config/wechatagent.json 的值）：
-        # scriptsDir: "/scripts"
-        # nativeDir: "/state/hook/native"
-        # clientDir: "/state/hook/wechat-4.1.10.27"
-        # tokenFile: "/state/hook/native-token.txt"
-        # desktopWechatExe: "D:/微信/Weixin/Weixin.exe"
-        # timeouts:
-        #   buildMs: 900000
-
+        workspace: ''
+        hookUrl: 'http://127.0.0.1:30001'
+        expectedVersion: '4.1.10.27'
+        powershell: 'powershell.exe'
