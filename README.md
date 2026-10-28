@@ -1,5 +1,7 @@
 # dsh-wechat-deploy-plugin
 
+[![npm](https://img.shields.io/npm/v/dsh-wechat-deploy-plugin.svg)](https://www.npmjs.com/package/dsh-wechat-deploy-plugin) [![license](https://img.shields.io/npm/l/dsh-wechat-deploy-plugin.svg)](LICENSE)
+
 把本机微信 Hook（固定版本 **4.1.10.27**）的**检查、准备、启动、重启、构建**做成 DSH 可以用对话调用的宿主插件。
 它不自己实现 Hook，也不改微信客户端逻辑：所有动作都调用 WeChat-Agent 工作区里已有的 PowerShell 脚本，并按
 `docs/WECHAT_HOOK.md`、`docs/HOOK_STARTUP_RECOVERY.md`、`docs/EXIT_SHUTDOWN.md` 记录的流程执行。
@@ -67,14 +69,14 @@ DSH 会拉取仓库并读取 `package.json` 的 `dsh.bundle`，按 `cordis.patch
 dsh plugin --profile desktop add https://github.com/banzhangdeerfenzhiyi/dsh-wechat-deploy-plugin
 ```
 
-### 方式 C：npm 包名（发布到 npm 后可用）
+### 方式 C：npm 包名（已发布，最省事）
 
 ```bash
 dsh plugin --profile desktop add dsh-wechat-deploy-plugin
 ```
 
-> 维护者提示：npm 发布配置与自动发布流程已就绪（`.github/workflows/publish-npm.yml`，
-> 需要仓库 secret `NPM_TOKEN`）。发布后把本节的「发布后可用」提示去掉即可。
+> 当前版本：`0.1.0`（[npm 页面](https://www.npmjs.com/package/dsh-wechat-deploy-plugin)）。
+> 中国大陆镜像源同步可能延迟几分钟；如果暂时装不到，指向官方源 `https://registry.npmjs.org` 即可。
 
 ### 方式 D：本地脚本（开发者）
 
